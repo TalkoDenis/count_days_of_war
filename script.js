@@ -34,4 +34,4 @@ function updateDaysCounter(dateString, elementId) {
     counterElement.textContent = `Война идёт ${days} дней`;
 }
 
-updateDaysCounter("2022-02-22", "days-counter");
+updateDaysCounter("2022-02-24", "days-counter");
