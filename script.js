@@ -1,15 +1,37 @@
+/**
+ * Calculate the number of days since a given date.
+ * @param {string} dateString - The start date in "YYYY-MM-DD" format.
+ * @returns {number} - The number of days since the given date.
+ */
 function calculateDaysSince(dateString) {
     const startDate = new Date(dateString);
+    if (isNaN(startDate)) {
+        console.error("Invalid date provided");
+        return 0;
+    }
+
     const today = new Date();
-    const diffTime = today - startDate; 
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+    const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+    const current = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    const diffTime = current - start;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
 }
 
-function updateDaysCounter() {
-    const days = calculateDaysSince("2022-02-22");
-    const counterElement = document.getElementById("days-counter");
+/**
+ * Update the text content of the counter element with the number of days.
+ * @param {string} dateString - The start date in "YYYY-MM-DD" format.
+ * @param {string} elementId - The ID of the element to update.
+ */
+function updateDaysCounter(dateString, elementId) {
+    const days = calculateDaysSince(dateString);
+    const counterElement = document.getElementById(elementId);
+    if (!counterElement) {
+        console.error(`Element with ID "${elementId}" not found.`);
+        return;
+    }
     counterElement.textContent = `Война идёт ${days} дней`;
 }
 
-updateDaysCounter();
+updateDaysCounter("2022-02-22", "days-counter");

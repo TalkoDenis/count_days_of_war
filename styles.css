@@ -6,14 +6,11 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #FFD700 50%, #0057B7 50%);
-}
-
-.container {
-    text-align: center;
+    color: #333;
 }
 
 #days-counter {
-    font-size: 3em;
-    color: #8B0000;
+    font-size: 4em;
+    color: #8B0000; /* Blood-red color */
     font-weight: bold;
 }
